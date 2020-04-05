@@ -65,10 +65,14 @@ let apple = new Apple()
 
 window.addEventListener('resize', function() {
     
+    
+    var oldEdge = edge
     edge = 100;
     
     if (innerHeight > innerWidth) edge = edge*Math.floor(innerWidth/edge)
     else edge = edge*Math.floor(innerHeight/edge)
+    
+    if (edge == oldEdge) return
     
     canvas.width = edge
     canvas.height = edge
@@ -83,8 +87,12 @@ window.addEventListener('resize', function() {
     document.getElementById("points").style.top = Math.floor(edge/25)+"px";
     document.getElementById("points").style.left = Math.floor(edge/25)+"px";
 
-    snake = new Snake()
-    apple = new Apple()
+    snake.cells = [];
+    snake.posX = (edge/20) * (snake.posX / (oldEdge/20))
+    snake.posY = (edge/20) * (snake.posY / (oldEdge/20))
+
+    apple.posX = (edge/20) * (apple.posX / (oldEdge/20))
+    apple.posY = (edge/20) * (apple.posY / (oldEdge/20))
 }, false);
 
 document.getElementById('stop').addEventListener('click', function() {
@@ -100,6 +108,18 @@ document.getElementById('stop').addEventListener('click', function() {
 })
 
 document.addEventListener('keydown', function(key) {
+    
+    if (key.which == 32){
+        if (stop === false) {
+            document.getElementById("paused").style.opacity = 0.5
+            stop = true
+        }
+        else {
+            stop = false
+            document.getElementById("paused").style.opacity = 0
+        }
+        return
+    }
     
     if (stop === true) return
     
