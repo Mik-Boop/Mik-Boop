@@ -30,8 +30,7 @@ document.getElementById("paused").style.width = Math.floor(edge/2)+"px";
     
 document.getElementById("points").style.top = Math.floor(edge/25)+"px";
 document.getElementById("points").style.left = Math.floor(edge/25)+"px";
-document.getElementById("stop").style.top = Math.floor(edge/22)+"px";
-document.getElementById("stop").style.right = Math.floor(edge/25)+"px";
+document.getElementById("stop").style.padding = Math.floor(edge/22)+"px";
 
 
 function start(fps) {
@@ -80,8 +79,7 @@ window.addEventListener('resize', function() {
     document.getElementById("stop").style.width = Math.floor(edge/22)+"px";
     document.getElementById("paused").style.width = Math.floor(edge/2)+"px";
     
-    document.getElementById("stop").style.top = Math.floor(edge/22)+"px";
-    document.getElementById("stop").style.right = Math.floor(edge/25)+"px";
+    document.getElementById("stop").style.padding = Math.floor(edge/22)+"px";
     document.getElementById("points").style.top = Math.floor(edge/25)+"px";
     document.getElementById("points").style.left = Math.floor(edge/25)+"px";
 
