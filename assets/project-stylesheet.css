@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+
+.google button, input[type=submit] {
+    margin: 10px 0;
+    color: #444;
+    background: #F3F3F3;
+    border: 1px #DADADA solid;
+    padding: 5px 10px;
+    border-radius: 2px;
+    font-weight: bold;
+    font-size: 9pt;
+    outline: none;
+    cursor: pointer;
+}
+
+.google button:hover, input[type=submit]:hover {
+    border: 1px #C6C6C6 solid;
+    box-shadow: 1px 1px 1px #EAEAEA;
+    color: #333;
+    background: #F7F7F7;
+}
+
+.google button:active, input[type=submit]:active {
+    box-shadow: inset 1px 1px 1px #DFDFDF;   
+}
+
+.slider-div {
+    font-weight: bold;
+    font-size: 15px;
+    font-family: 'Raleway', sans-serif;
+    margin: 0 auto;
+    width: fit-content;
+}
+
+.slider-div input[type=range] {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.slider-div input[type=checkbox] {
+    margin: 5px;
+}
+
+.slider-div label {
+    margin-top: 0;
+    display: inline-block;
+}
+
+.slider-div .google {
+    margin: 0 auto;
+    width: fit-content;
+}
+
+.slider-div .google button {
+    margin-left: 5px;
+    margin-right: 5px;
+}
