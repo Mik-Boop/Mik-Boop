@@ -1,1 +1,84 @@
-UWU
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            @font-face {
+            font-family: "Consolas";
+             src: url("/assets/Consolas.woff") format('woff');
+            }
+            body, html {
+                height: 100%;
+                overflow: hidden;
+                margin: 0;
+            }
+            canvas {
+                border-radius: 4px;
+                border: 2px solid #ddd;
+            }
+            .canvas {
+                width: fit-content;
+                height: 100%;
+                margin: 0 auto;
+                margin-top: 10px;
+                position: relative;
+            }
+            #touchy {
+                margin: 0;
+                margin-top: -50%;
+                width: 100%;
+                height: 100%;
+            }
+            #touchHere {
+                width: fit-content;
+                position: absolute;
+                left: 0;
+                right: 0;
+                margin: auto
+                transform: translateY(30%);
+                bottom: 30%;
+                margin: auto;
+                font-family: Consolas;
+                color: #bbb;
+                opacity: 0;
+                transition: opacity 2s;
+                -webkit-transition: opacity 2s; /* Safari */
+            }
+            #points {
+                position: absolute;
+                font-family: sans-serif;
+                margin: 0;
+            }
+            #stop {
+                position: absolute;
+                font-family: sans-serif;
+                margin: 0;
+                padding: 5px;
+            }
+            #final, #paused {
+                font-family: sans-serif;
+                position: absolute;
+                margin: 0;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                opacity: 0;
+                transition: opacity 2s;
+                -webkit-transition: opacity 2s; /* Safari */
+            }
+        </style>
+        <link rel="stylesheet" type="text/css" href="/assets/project-stylesheet.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+            <div class="canvas">
+                <p id="points">0</p>
+                <img id="stop" width=30px src="/assets/icons/pause-svgrepo-com.svg">
+                <p id="final">0</p>
+                <img id="paused" src="/assets/icons/pause-svgrepo-com.svg">
+                <canvas id="canvas"></canvas>
+                <div id="touchy"></div>
+                    <p id="touchHere">&lt;--touch here--&gt;</p>
+            </div>
+        <script src="./snek.js" type="text/javascript"></script>
+    </body>
+</html>
