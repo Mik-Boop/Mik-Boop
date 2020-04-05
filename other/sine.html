@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/assets/project-stylesheet.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body style="overflow: hidden;">
+        <div class="slider-div">
+            <label for="height">Y Pos:</label>
+            <input type="range" id="height" min="0" max="0" value="0" oninput="sliderInput(this)">
+            <label for="length">Wavelength:</label>
+            <input type="range" id="length" min="-200" max="200" value="20" oninput="sliderInput(this)">
+            <label for="amplitude">Amplitude:</label>
+            <input type="range" id="amplitude" min="-200" max="200" value="100" oninput="sliderInput(this)">
+            <div class="google">
+                <button onclick="refreshPage()">Clear</button>
+                <input id="clear" type="checkbox" value="Auto-clear" checked="true">Auto-clear
+                <button onclick="saveAsImage()">Save as Image</button>
+            </div>
+        </div>
+        <canvas id="canvas"></canvas>
+        <script src="./sine.js" type="text/javascript"></script>
+    </body>
+</html>
