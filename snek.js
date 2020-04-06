@@ -10,7 +10,7 @@ let frameCount = 0;
 let fps, fpsInterval, startTime, now, then, elapsed;
 
 let timeoutStart
-let stop
+let stop = false;
 
 let edge = 100;
 
