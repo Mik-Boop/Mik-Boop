@@ -8,6 +8,7 @@ else Touch = false
 
 let frameCount = 0;
 let fps, fpsInterval, startTime, now, then, elapsed;
+var updated;
 
 let timeoutStart
 let stop = false;
@@ -45,6 +46,8 @@ function Snake() {
   this.posY = (edge/20) * randInt(20,0)
   this.headingX = 0
   this.headingY = -1
+  this.lastHeadingX = 0
+  this.lastHeadingY = -1
   this.cells =[]
   this.cellCount = 3
   this.dead = false
@@ -155,7 +158,6 @@ document.addEventListener('keydown', function(key) {
 });
 
 document.getElementById('touchy').addEventListener('touchstart', function(touchy){
-//document.body.addEventListener('touchstart', function(touchy){
     
     if (stop === true) return
     
@@ -217,8 +219,13 @@ function refresh(){
                 return
             }
             
-            snake.posX += snake.headingX * edge/20;
+            if (snake.headingX == 0-snake.lastHeadingX) snake.headingX = snake.lastHeadingX;
+            if (snake.headingX == 0-snake.lastHeadingX) snake.headingY = snake.lastHeadingY;
+            
             snake.posY += snake.headingY * edge/20;
+            snake.posX += snake.headingX * edge/20;
+            snake.lastHeadingY = snake.headingY;
+            snake.lastHeadingX = snake.headingX;
             
             if (snake.posX < 0) {
                 snake.posX = canvas.width - edge/20;
@@ -231,11 +238,11 @@ function refresh(){
             } else if (snake.posY >= canvas.height) {
                 snake.posY = 0;
             }
-    
+
             snake.cells.unshift([snake.posX, snake.posY]);
             
             if (snake.cells.length > snake.cellCount) snake.cells.pop();
-        
+
             snake.cells.forEach(function(cell, index) {
                 c.fillRect(cell[0], cell[1], edge/20, edge/20);
                 
