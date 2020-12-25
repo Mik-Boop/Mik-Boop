@@ -1,6 +1,6 @@
 
-var canvas = document.getElementById("canvas");
-var c = canvas.getContext("2d");
+let canvas = document.getElementById("canvas");
+let c = canvas.getContext("2d");
 let Touch;
 
 if(window.matchMedia("(pointer: coarse)").matches) Touch = true
@@ -8,12 +8,14 @@ else Touch = false
 
 let frameCount = 0;
 let fps, fpsInterval, startTime, now, then, elapsed;
-var updated;
+let updated;
 
 let timeoutStart
 let stop = false;
 
 let edge = 100;
+
+let keys = [];
 
 if (innerHeight > innerWidth) edge = edge*Math.floor(innerWidth/edge)
 else edge = edge*Math.floor(innerHeight/edge)
@@ -69,7 +71,7 @@ let apple = new Apple()
 window.addEventListener('resize', function() {
     
     
-    var oldEdge = edge
+    let oldEdge = edge
     edge = 100;
     
     if (innerHeight > innerWidth) edge = edge*Math.floor(innerWidth/edge)
@@ -135,26 +137,8 @@ document.addEventListener('keydown', function(key) {
         }
         return
     }
-    
-    if (key.which == 37 && snake.headingX != 1){
-        snake.headingX = -1;
-        snake.headingY = 0;
-    }
 
-  else if (key.which == 38 && snake.headingY != 1) {
-    snake.headingY = -1;
-    snake.headingX = 0;
-  }
-
-  else if (key.which == 39 && snake.headingX != -1) {
-    snake.headingX = 1;
-    snake.headingY = 0;
-  }
-
-  else if (key.which === 40 && snake.headingY != -1) {
-    snake.headingY = 1;
-    snake.headingX = 0;
-  }
+    keys.push(key.which);
 });
 
 document.getElementById('touchy').addEventListener('touchstart', function(touchy){
@@ -217,6 +201,27 @@ function refresh(){
                 document.getElementById("points").style.opacity = 0
                 document.getElementById("final").style.opacity = 1
                 return
+            }
+
+            let key = keys.shift();
+            if (key == 37 && snake.headingX != 1){
+                snake.headingX = -1;
+                snake.headingY = 0;
+            }
+
+            else if (key == 38 && snake.headingY != 1) {
+                snake.headingY = -1;
+                snake.headingX = 0;
+            }
+
+            else if (key == 39 && snake.headingX != -1) {
+                snake.headingX = 1;
+                snake.headingY = 0;
+            }
+
+            else if (key === 40 && snake.headingY != -1) {
+                snake.headingY = 1;
+                snake.headingX = 0;
             }
             
             if (snake.headingX == 0-snake.lastHeadingX) snake.headingX = snake.lastHeadingX;
