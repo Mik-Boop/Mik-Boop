@@ -138,7 +138,8 @@ document.addEventListener('keydown', function(key) {
         return
     }
 
-    keys.push(key.which);
+    if (key.which !== keys[keys.length - 1])
+        keys.push(key.which);
 });
 
 document.getElementById('touchy').addEventListener('touchstart', function(touchy){
